@@ -1,4 +1,3 @@
-from numpy import digitize
 with open('./input03.txt') as f:
     repport_original= [x for x in f.read().splitlines()]
 
