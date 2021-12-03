@@ -6,23 +6,13 @@ ox_repport = repport_original.copy()
 co2_repport = repport_original.copy()
 
 def most_common(repport, i):
-    ones=0
-    zeros=0
-    for line in repport:
-        if int(line[i]) == 0:
-            zeros += 1
-        else:
-            ones += 1
+    ones=sum([int(x[i]) for x in repport])
+    zeros=len(repport) - ones
     return int(ones >= zeros)
 
 def least_common(repport, i):
-    ones=0
-    zeros=0
-    for line in repport:
-        if int(line[i]) == 0:
-            zeros += 1
-        else:
-            ones += 1
+    ones=sum([int(x[i]) for x in repport])
+    zeros=len(repport) - ones
     return int(zeros > ones)
 
 end=True
@@ -46,6 +36,7 @@ while(end):
                 val = least_common(co2_repport, i)
                 co2_repport = [x for x in co2_repport if int(x[i])==val]
     end=(ox_end )
+
 
 print(ox_rating)
 print(co2_rating)
