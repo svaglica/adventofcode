@@ -17,33 +17,24 @@ for i in range(int(len(raw_boards)/5)):
     boards += [bd]
 #print(boards)
 
-def check_win(wb):
+def check_win():
     for j in range(len(boards)):
         bd = boards[j]
         for i in range(5):
-            if bd[0][i] == bd[1][i] == bd[2][i] == bd[3][i] == bd[4][i]:
-                print("WIN!!")
-                print(bd)
-                wb = bd
-                return wb
-            if bd[i][0] == bd[i][1] == bd[i][2] == bd[i][3] == bd[i][4]:
-                print("WIN!!")
-                print(bd)
-                wb = bd
-                return wb
+            if bd[0][i] == bd[1][i] == bd[2][i] == bd[3][i] == bd[4][i] or \
+               bd[i][0] == bd[i][1] == bd[i][2] == bd[i][3] == bd[i][4]:
+                return bd
 
 
 
 j=0
-print(rng)
-winning_board=[]
 for new_nb in rng:
     for bd in boards:
         for i in range(5):
             bd[i] = [-999 if x==new_nb else x for x in bd[i]]
 
     if j>=4:
-        winning_board=check_win(winning_board)
+        winning_board=check_win()
         if winning_board :
             print(new_nb)
             print(winning_board)
@@ -52,8 +43,6 @@ for new_nb in rng:
                 score += sum([x if x != -999 else 0 for x in winning_board[i]])
             score *= new_nb
             print(score)
-#            for bds in boards:
-#                print(np.matrix(bds))
             exit(True)
     j+=1
 
