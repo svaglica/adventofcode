@@ -22,7 +22,7 @@ def check_win(boards):
         bd = boards[j]
         for i in range(5):
             if bd[0][i] == bd[1][i] == bd[2][i] == bd[3][i] == bd[4][i] or\
-               bd[i][0] == bd[i][1] == bd[i][2] == bd[i][3] == bd[i][4]:
+               bd[i] == [-999] * 5:
                 return (True, j)
     return (False, -1)
 
